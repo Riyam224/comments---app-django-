@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+
+{{ post.body }}
+<br>
+
+
+<hr class="text-secondary" style="width: 4px;">
+<h3 class="text-secondary">comments .... </h3>
+
+{% for comment in post.comments.all  %}
+
+
+
+
+
+ <p class="mt-2 text-primary">  {{ comment.body }}  </p>
+
+
+ 
+{% empty %}
+
+<p>no comments yet </p>
+    
+{% endfor %}
+    
+
+
+
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+
+    <button class="btn btn-primary">add comment</button>
+
+
+
+
+
+</form>
+    
+
+    
+    
+{% endblock content %}
+    
